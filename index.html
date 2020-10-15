@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link
+			rel="icon"
+			type="image/png"
+			href="https://img.icons8.com/nolan/64/domain.png"
+		/>
+
+		<title>Documentación API - SUPPORT ME!</title>
+		<meta name="author" content="SUPPORT ME! TEAM - MOLINA - LóPEZ - LINDAO" />
+		<meta name="keywords" content="Django, API, Documentación" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+		/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<h1>SUPPORT ME! - Documentación</h1>
+			<p>
+				<strong>Base URL: </strong><span>/</span>, <strong>Version: </strong
+				><span>0.1</span>
+			</p>
+			<p>
+				<span><strong>Default request content-types:</strong></span>
+				application/json<br />
+				<span><strong>Default response content-types:</strong></span>
+				application/json<br />
+				<span><strong>Schemes:</strong></span>
+				HTTP<br />
+			</p>
+			<h2>Resumen del API</h2>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th scope="col">Ruta</th>
+						<th scope="col">Operacion</th>
+						<th scope="col">Authorization</th>
+						<th scope="col">Descripcion</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>/categories</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Retorna todas las categorias de las huecas registradas en la base
+							de datos
+						</td>
+					</tr>
+					<tr>
+						<td>/category/&ltint:pk&gt</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Retorna la categoria identificado por el id especificado en pk, en
+							la url, realizando un filtro en los registros de la base de datos
+						</td>
+					</tr>
+					<tr>
+						<td>/cities</td>
+						<td>GET</td>
+						<td></td>
+						<td>Retorna todas las ciudades registrados en la base de datos</td>
+					</tr>
+					<tr>
+						<td>/city/&ltint:pk&gt</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Retorna la ciudad identificado por el id especificado en pk, en la
+							url, realizando un filtro en los registros de la base de datos
+						</td>
+					</tr>
+					<tr>
+						<td>/comment</td>
+						<td>GET</td>
+						<td>Token</td>
+						<td>
+							Guarda en la base de datos, un comentario realizado por un usuario
+							en una hueca
+						</td>
+					</tr>
+					<tr>
+						<td>/comments/&ltint:hueca&gt</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Retorna todos los comentarios realizados en la hueca recibido como
+							parametro en la url
+						</td>
+					</tr>
+					<tr>
+						<td>/comment/&ltint:pk&gt</td>
+						<td>GET</td>
+						<td>Token</td>
+						<td>Elimina un comentario de un usuario en una hueca</td>
+					</tr>
+					<tr>
+						<td>/hueca</td>
+						<td>POST</td>
+						<td>Token</td>
+						<td>
+							Guarda la informacion de la hueca obtenido en el paquete recibido
+							en la base de datos
+						</td>
+					</tr>
+					<tr>
+						<td style="vertical-align: middle" rowspan="3">
+							/hueca/&ltint:pk&gt
+						</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Responde con un paquete conteniendo la informacion de la hueca
+							encontrada por el parametro pk en el servidor
+						</td>
+					</tr>
+					<tr>
+						<td>PUT</td>
+						<td>Token</td>
+						<td>
+							Guarda la informacion de la hueca en la base, identificado por pk
+						</td>
+					</tr>
+					<tr>
+						<td>DELETE</td>
+						<td>Token</td>
+						<td>Elimina la hueca identificada por el pk de la base de datos</td>
+					</tr>
+					<tr>
+						<td>/huecas</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Responde con un paquete que almacena la informacion de todas las
+							huecas registradas en el servidor
+						</td>
+					</tr>
+					<tr>
+						<td>/huecas/categories/&ltint:category&gt</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Retorna todas las huecas que cumplan con la categoria recibida
+							como parametro en category
+						</td>
+					</tr>
+					<tr>
+						<td>/huecas/cities/&ltint:city&gt</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Responde con un paquete que contiene todas las huecas asociadas al
+							identificador de la ciudad recibido en el requerimiento
+						</td>
+					</tr>
+					<tr>
+						<td>/huecas/search/&ltstr:search&gt</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Retorna un listado de huecas cuyo nombre coincidan con el
+							parametro search, enviado como parametro
+						</td>
+					</tr>
+					<tr>
+						<td>/location/&ltstr:latitude&gt/&ltstr:longitude&gt/&ltstr:km&gt</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Responde con un paquete que contiene las huecas que se encuentren
+							cerca de la ubicacion(latitud, longitud) y km.
+						</td>
+					</tr>
+					<tr>
+						<td>/image</td>
+						<td>POST</td>
+						<td>Token</td>
+						<td>Almacena la imagen enviada en el paquete en el servidor</td>
+					</tr>
+					<tr>
+						<td>/images/&ltint:hueca&gt</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Retorna todas las imagenes de la base de datos que esten
+							relacionadas con el identificador hueca
+						</td>
+					</tr>
+					<tr>
+						<td style="vertical-align: middle" rowspan="2">
+							/image/&ltint:pk&gt
+						</td>
+						<td>GET</td>
+						<td></td>
+						<td>Retorna la imagen identificada por pk de la base de datos</td>
+					</tr>
+					<tr>
+						<td>DELETE</td>
+						<td>Token</td>
+						<td>
+							Elimina la imagen identificada por pk de la base de datos, retorna
+							una respuesta de eliminacion exitosa
+						</td>
+					</tr>
+					<tr>
+						<td>/menu</td>
+						<td>POST</td>
+						<td>Token</td>
+						<td>
+							Recibe la informacion de un plato de comida enviado en el paquete
+							y lo guarda en el servidor
+						</td>
+					</tr>
+					<tr>
+						<td>/menus/&ltint:hueca&gt</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Retorna todos los platos de comida guardados en el servidor y que
+							estan asociados con el parametro hueca
+						</td>
+					</tr>
+					<tr>
+						<td style="vertical-align: middle" rowspan="2">
+							/menu/&ltint:pk&gt
+						</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Retorna un plato de comida de la hueca, el plato es identificado
+							en la base por el parametro pk
+						</td>
+					</tr>
+					<tr>
+						<td>DELETE</td>
+						<td>Token</td>
+						<td>
+							Elimino un plato de comida de la hueca, el plato a eliminar es
+							identificado en la base por el parametro pk
+						</td>
+					</tr>
+					<tr>
+						<td>/like</td>
+						<td>POST</td>
+						<td>Token</td>
+						<td>Guarda el registro de un like de un usuario en la hueca</td>
+					</tr>
+					<tr>
+						<td>/likes/&ltint:hueca&gt</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Retorna una listado de los usuarios que han dado like a la hueca
+							recibido como parametro
+						</td>
+					</tr>
+					<tr>
+						<td style="vertical-align: middle" rowspan="2">
+							/like/&ltint:hueca&gt/&ltint:user&gt
+						</td>
+						<td>GET</td>
+						<td>Token</td>
+						<td>
+							Retorna un like realizado por el user en la hueca, ambos datos son
+							recibidos de la url
+						</td>
+					</tr>
+					<tr>
+						<td>DELETE</td>
+						<td>Token</td>
+						<td>
+							Elimino un like realizado por el user en la hueca, ambos datos son
+							recibidos de la url
+						</td>
+					</tr>
+					<tr>
+						<td>/likes/&ltint: user&gt</td>
+						<td>GET</td>
+						<td>Token</td>
+						<td>
+							Retorna un listado de las huecas que el usuario le ha dado like
+						</td>
+					</tr>
+					<tr>
+						<td>/rating</td>
+						<td>POST</td>
+						<td>Token</td>
+						<td>
+							Guardo una calificacion hecha por un usuario en una hueca en el
+							servidor
+						</td>
+					</tr>
+					<tr>
+						<td>/ratings/&ltint:hueca&gt</td>
+						<td>GET</td>
+						<td></td>
+						<td>
+							Regresa las calificaciones hechas por los usuarios en la hueca
+							recibido como dato en la url
+						</td>
+					</tr>
+					<tr>
+						<td>/rating/&ltint:hueca&gt/&ltint:user&gt</td>
+						<td>GET</td>
+						<td>Token</td>
+						<td>
+							Regresa el listado de todas las calificaciones realizadas por el
+							usuario definido en user, en la hueca recibida como dato en la url
+						</td>
+					</tr>
+					<tr>
+						<td>/user/&ltint:pk&gt</td>
+						<td>GET</td>
+						<td>Token</td>
+						<td>Retorna un usuario</td>
+					</tr>
+					<tr>
+						<td>/login</td>
+						<td>POST</td>
+						<td></td>
+						<td>
+							Valida las credenciales de inicio de sesion enviadas por el
+							usuario, y retorna una respuesta con el token y datos del usuario
+							en caso de validacion exitosa
+						</td>
+					</tr>
+					<tr>
+						<td>/signup</td>
+						<td>POST</td>
+						<td></td>
+						<td>
+							Registra un nuevo usuario en la aplicacion, donde se valida si las
+							credenciales enviadas son las correctas para realizar el registro
+						</td>
+					</tr>
+					<tr>
+						<td>/logout/&ltint:pk&gt</td>
+						<td>DELETE</td>
+						<td>Token</td>
+						<td>Elimina el Token del usuario que ha iniciado sesión.</td>
+					</tr>
+					<tr>
+						<td>/update/&ltint:pk&gt</td>
+						<td>PUT</td>
+						<td>Token</td>
+						<td>Actualiza el Usuario.</td>
+					</tr>
+					<tr>
+						<td>/delete/&ltint:pk&gt</td>
+						<td>DELETE</td>
+						<td>Token</td>
+						<td>Elimina el Usuario o simplemente lo desactiva.</td>
+					</tr>
+					<tr>
+						<td>/users</td>
+						<td>GET</td>
+						<td>Token</td>
+						<td>Retorna todos los usuarios registrados en la aplicación</td>
+					</tr>
+				</tbody>
+			</table>
+			<footer>
+				<p>
+					Copyright &copy; 2020 - SUPPORT ME! TEAM - MOLINA - LóPEZ - LINDAO
+				</p>
+			</footer>
+		</div>
+	</body>
+</html>
